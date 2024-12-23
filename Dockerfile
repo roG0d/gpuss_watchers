@@ -55,6 +55,10 @@ RUN echo "conda activate gpu_mode" >> ~/.bashrc
 # Install CUDA toolkit within the conda environment
 RUN ~/miniconda3/bin/conda install cuda -n gpu_mode -c nvidia/label/cuda-12.4.0 -y
 
+# Install cudnn within the conda environment (required by TransformerEngine)
+RUN ~/miniconda3/bin/conda install -n gpu_mode cudnn=8.9 -c nvidia/label/cuda-12.4.0 -y
+
+
 # Install sglang 
 #RUN ~/miniconda3/envs/sglang/bin/pip install "sglang[all]"
 #RUN ~/miniconda3/envs/sglang/bin/pip install flashinfer -i https://flashinfer.ai/whl/cu121/torch2.4/
